@@ -1,0 +1,11 @@
+{
+	"color_scheme": "Mariana.sublime-color-scheme",
+	"theme": "Default.sublime-theme",
+	"hardware_acceleration": "opengl",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"font_size": 12,
+	"save_on_focus_lost": true,
+}
