@@ -14,17 +14,29 @@ fi
 
 echo -n "Working"
 CONNECTION_STATUS=$(adb connect $IP_ADDRESS 2> /dev/null)
-if [[ $CONNECTION_STATUS != *"connected"* ]]; then
-    echo -e "\rCould not connect to the Chromecast"
+if [[ $CONNECTION_STATUS != *"connected"* || $CONNECTION_STATUS == *"cannot"* ]]; then
+
+    # We do not want to exit now if it is just unauthorized because we will check the authorization 3 seconds later
+    if ! [[ $CONNECTION_STATUS == *"failed"* && $CONNECTION_STATUS == *"authenticate"* ]]; then
+        echo -e "\rCould not connect to the Chromecast"
+        exit 2
+    fi
+fi
+
+echo -n "."
+sleep 1
+echo -n "."
+sleep 1
+echo -n "."
+sleep 1
+echo -n "."
+
+unset CONNECTION_STATUS
+CONNECTION_STATUS=$(adb -s $IP_ADDRESS get-state 2>&1)            # redirecting stderr to stdout
+if [[ $CONNECTION_STATUS == *"unauthorized"* ]]; then
+    echo -e "\rCould not authorize on the Chromecast"
     exit 2
 fi
-echo -n "."
-sleep 1
-echo -n "."
-sleep 1
-echo -n "."
-sleep 1
-echo -n "."
 
 WM_SIZE_OUTPUT=$(adb -s $IP_ADDRESS shell wm size)
 echo -n "."
