@@ -13,7 +13,7 @@ else
 fi
 
 echo -n "Working"
-CONNECTION_STATUS=$(adb connect $IP_ADDRESS)
+CONNECTION_STATUS=$(adb connect $IP_ADDRESS 2> /dev/null)
 if [[ $CONNECTION_STATUS != *"connected"* ]]; then
     echo -e "\rCould not connect to the Chromecast"
     exit 2
