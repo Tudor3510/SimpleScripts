@@ -13,7 +13,7 @@ else
 fi
 
 echo -n "Working"
-CONNECTION_STATUS=$(adb connect $IP_ADDRESS 2> /dev/null)
+CONNECTION_STATUS=$(adb connect $IP_ADDRESS 2> /dev/null)   # redirecting stderr to null
 if [[ $CONNECTION_STATUS != *"connected"* || $CONNECTION_STATUS == *"cannot"* ]]; then
 
     # We do not want to exit now if it is just unauthorized because we will check the authorization 3 seconds later
