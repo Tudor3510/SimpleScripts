@@ -1,5 +1,4 @@
 #!/bin/sh
-export PATH=$PATH:/c/Users/tudor/AppData/Local/Android/Sdk/platform-tools/
 
 if [ "$1" != "in" ] && [ "$1" != "out" ]; then
     echo "please write \"zoom in\" or \"zoom out\""
