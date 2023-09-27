@@ -1,0 +1,66 @@
+#!/bin/sh
+export PATH=$PATH:/c/Users/tudor/AppData/Local/Android/Sdk/platform-tools/
+
+if [ "$1" != "in" ] && [ "$1" != "out" ]; then
+    echo "please write \"zoom in\" or \"zoom out\""
+    exit 2
+fi
+
+if [ "$#" -lt 2 ]; then
+    echo -n "Enter the ip address: "
+    read IP_ADDRESS
+else
+    IP_ADDRESS=$2
+fi
+
+echo -n "Working"
+CONNECTION_STATUS=$(adb connect $IP_ADDRESS)
+if [[ $CONNECTION_STATUS != *"connected"* ]]; then
+    echo -e "\rCould not connect to the Chromecast"
+    exit 2
+fi
+echo -n "."
+sleep 1
+echo -n "."
+sleep 1
+echo -n "."
+sleep 1
+echo -n "."
+
+WM_SIZE_OUTPUT=$(adb -s $IP_ADDRESS shell wm size)
+echo -n "."
+WM_SIZE_RESOLUTION=${WM_SIZE_OUTPUT##*:}
+CHROMECAST_RESOLUTION=$(echo "$WM_SIZE_RESOLUTION" | tr -d '\n[:space:]')
+
+if [[ $CHROMECAST_RESOLUTION == *"1280x720"* ]]; then
+    if [ "$1" == "in" ]; then
+        adb -s $IP_ADDRESS shell wm density 213
+    elif [ "$1" == "out" ]; then
+        adb -s $IP_ADDRESS shell wm density 192
+    fi
+
+elif [[ $CHROMECAST_RESOLUTION == *"1366x768"* ]]; then
+    # for zoom out: adb -s $1 shell wm density 204
+    echo -e "\rResolution not yet supported by Chromecast"
+
+elif [[ $CHROMECAST_RESOLUTION == *"1920x1080"* ]]; then
+    if [ "$1" == "in" ]; then
+        adb -s $IP_ADDRESS shell wm density 320
+    elif [ "$1" == "out" ]; then
+        adb -s $IP_ADDRESS shell wm density 288
+    fi
+
+elif [[ $CHROMECAST_RESOLUTION == *"2560x1440"* ]]; then
+    # for zoom out: adb -s $1 shell wm density 384
+    echo -e "\rResolution not yet supported by Chromecast"
+
+elif [[ $CHROMECAST_RESOLUTION == *"3840x2160"* ]]; then
+    # for zoom out: adb -s $1 shell wm density 576
+    echo -e "\rResolution not yet supported by Chromecast"
+
+else
+    echo -e "\rError in obtaining resolution"
+    exit 2
+fi
+
+echo -e "\rDone        "
