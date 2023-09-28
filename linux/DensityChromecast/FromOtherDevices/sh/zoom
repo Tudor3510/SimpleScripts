@@ -37,6 +37,10 @@ if [[ $CONNECTION_STATUS == *"unauthorized"* ]]; then
     echo -e "\rCould not authorize on the Chromecast"
     exit 2
 fi
+if [[ $CONNECTION_STATUS == *"offline"* ]]; then
+    echo -e "\rDevice offline"
+    exit 2
+fi
 
 WM_SIZE_OUTPUT=$(adb -s $IP_ADDRESS shell wm size)
 echo -n "."
