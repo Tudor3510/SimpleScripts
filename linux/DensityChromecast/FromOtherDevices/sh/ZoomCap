@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ "$1" != "in" ] && [ "$1" != "out" ]; then
+    echo "please write \"Zoom in\" or \"Zoom out\""
+    exit 2
+fi
+
+if [ "$#" -lt 2 ]; then
+    zoom $1
+    exit $?             # exitting with the exit code of zoom
+else
+    zoom $1 $2
+    exit $?             # exitting with the exit code of zoom
+fi
