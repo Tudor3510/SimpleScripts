@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$#" -lt 1 ]; then
+    zoom out
+    exit $?             # exitting with the exit code of zoom
+else
+    zoom out $1
+    exit $?             # exitting with the exit code of zoom
+fi
