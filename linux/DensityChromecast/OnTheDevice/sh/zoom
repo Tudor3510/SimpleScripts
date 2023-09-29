@@ -1,0 +1,81 @@
+#!/bin/sh
+
+if [ "$1" != "in" ] && [ "$1" != "out" ]; then
+    echo "please write \"zoom in\" or \"zoom out\""
+    exit 2
+fi
+
+if [ "$#" -lt 2 ]; then
+    echo -n "Enter the ip address: "
+    read IP_ADDRESS
+else
+    IP_ADDRESS=$2
+fi
+
+echo -n "Working"
+CONNECTION_STATUS=$(adb connect $IP_ADDRESS 2> /dev/null)   # redirecting stderr to null
+if [[ $CONNECTION_STATUS != *"connected"* || $CONNECTION_STATUS == *"cannot"* ]]; then
+
+    # We do not want to exit now if it is just unauthorized because we will check the authorization 3 seconds later
+    if ! [[ $CONNECTION_STATUS == *"failed"* && $CONNECTION_STATUS == *"authenticate"* ]]; then
+        echo -e "\rCould not connect to the Chromecast"
+        exit 2
+    fi
+fi
+
+echo -n "."
+sleep 1
+echo -n "."
+sleep 1
+echo -n "."
+sleep 1
+echo -n "."
+
+unset CONNECTION_STATUS
+CONNECTION_STATUS=$(adb -s $IP_ADDRESS get-state 2>&1)            # redirecting stderr to stdout
+if [[ $CONNECTION_STATUS == *"unauthorized"* ]]; then
+    echo -e "\rCould not authorize on the Chromecast"
+    exit 2
+fi
+if [[ $CONNECTION_STATUS == *"offline"* ]]; then
+    echo -e "\rDevice offline"
+    exit 2
+fi
+
+WM_SIZE_OUTPUT=$(adb -s $IP_ADDRESS shell wm size)
+echo -n "."
+WM_SIZE_RESOLUTION=${WM_SIZE_OUTPUT##*:}
+CHROMECAST_RESOLUTION=$(echo "$WM_SIZE_RESOLUTION" | tr -d '\n[:space:]')
+
+if [[ $CHROMECAST_RESOLUTION == *"1280x720"* ]]; then
+    if [ "$1" == "in" ]; then
+        adb -s $IP_ADDRESS shell wm density 213
+    elif [ "$1" == "out" ]; then
+        adb -s $IP_ADDRESS shell wm density 192
+    fi
+
+elif [[ $CHROMECAST_RESOLUTION == *"1366x768"* ]]; then
+    # for zoom out: adb -s $IP_ADDRESS shell wm density 204
+    echo -e "\rResolution not yet supported by Chromecast"
+
+elif [[ $CHROMECAST_RESOLUTION == *"1920x1080"* ]]; then
+    if [ "$1" == "in" ]; then
+        adb -s $IP_ADDRESS shell wm density 320
+    elif [ "$1" == "out" ]; then
+        adb -s $IP_ADDRESS shell wm density 288
+    fi
+
+elif [[ $CHROMECAST_RESOLUTION == *"2560x1440"* ]]; then
+    # for zoom out: adb -s $IP_ADDRESS shell wm density 384
+    echo -e "\rResolution not yet supported by Chromecast"
+
+elif [[ $CHROMECAST_RESOLUTION == *"3840x2160"* ]]; then
+    # for zoom out: adb -s $IP_ADDRESS shell wm density 576
+    echo -e "\rResolution not yet supported by Chromecast"
+
+else
+    echo -e "\rError in obtaining resolution"
+    exit 2
+fi
+
+echo -e "\rDone        "
