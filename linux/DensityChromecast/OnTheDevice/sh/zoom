@@ -18,7 +18,7 @@ if [[ $CHROMECAST_RESOLUTION == *"1280x720"* ]]; then
 
 elif [[ $CHROMECAST_RESOLUTION == *"1366x768"* ]]; then
     # for zoom out: wm density 204
-    echo -e "Resolution not yet supported by Chromecast"
+    echo "Resolution not yet supported by Chromecast"
 
 elif [[ $CHROMECAST_RESOLUTION == *"1920x1080"* ]]; then
     if [ "$1" == "in" ]; then
@@ -29,14 +29,14 @@ elif [[ $CHROMECAST_RESOLUTION == *"1920x1080"* ]]; then
 
 elif [[ $CHROMECAST_RESOLUTION == *"2560x1440"* ]]; then
     # for zoom out: wm density 384
-    echo -e "Resolution not yet supported by Chromecast"
+    echo "Resolution not yet supported by Chromecast"
 
 elif [[ $CHROMECAST_RESOLUTION == *"3840x2160"* ]]; then
     # for zoom out: wm density 576
-    echo -e "Resolution not yet supported by Chromecast"
+    echo "Resolution not yet supported by Chromecast"
 
 else
-    echo -e "Error in obtaining resolution"
+    echo "Error in obtaining resolution"
     exit 2
 fi
 
