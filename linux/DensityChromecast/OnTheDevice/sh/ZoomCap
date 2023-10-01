@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "$1" != "in" ] && [ "$1" != "out" ]; then
+    echo "please write \"Zoom in\" or \"Zoom out\""
+    exit 2
+fi
+
+zoom $1
+exit $?
