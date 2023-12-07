@@ -40,4 +40,5 @@ if [ "$keyboard_address" != "empty" ]; then
 	bluetoothctl remove $keyboard_address
 fi
 
-gnome-control-center bluetooth
+nohup gnome-control-center bluetooth >/dev/null 2>&1 &
+sleep 2
