@@ -1,1 +1,1 @@
-Philips 32PFS6805/12 Saphi OS uses SLAAC for IPv6, but does not use DHCPv6. If no RDNSS is provided via SLAAC, IPv6 DNS servers will be empty on the TV. IPv6 internet is accessible via IPv4 DNS, though.
+Philips 32PFS6805/12 Saphi OS uses SLAAC for IPv6, but does not use DHCPv6. If no RDNSS is provided via SLAAC, IPv6 DNS servers will be empty on the TV. IPv6 internet is accessible via IPv4 DNS, though. No option to manually configure IPv6
