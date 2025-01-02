@@ -1,0 +1,1 @@
+PS5 has no option to manually configure IPv6
