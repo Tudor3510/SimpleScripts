@@ -1,0 +1,1 @@
+When setting custom DNS on Apple TV (only one IPv4 custom DNS is supported), IPv6 DNS servers will be disabled
