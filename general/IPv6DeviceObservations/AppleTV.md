@@ -1,11 +1,6 @@
 # Apple TV
 
-- When custom DNS is configured, only one IPv4 custom DNS server is supported
-- Enabling custom DNS disables IPv6 DNS servers
-
-## Notes
-
-When setting custom DNS on Apple TV, only one IPv4 custom DNS server is supported. As a result, IPv6 DNS servers will be disabled.
+When setting custom DNS on Apple TV (only one IPv4 custom DNS is supported), IPv6 DNS servers will be disabled. There is no option to manually configure anything related to IPv6 (except for disabling IPv6 DNS servers using the previously mentioned method).
 
 ## Disclaimer
 
