@@ -1,0 +1,1 @@
+Copying the idp_marker cookie (for the .nature.com domain) is sufficient to replicate a logged-in session obtained using a university IP address. However, to ensure it works correctly, delete all other cookies. Some will regenerate automatically, while others might keep you logged into an older session.
