@@ -1,0 +1,4 @@
+Mozilla/5.0 (Linux armeabi-v7a; Android 7.1.2) Cobalt/11.141130-gold (unlike Gecko) Starboard/5, _ATV_msm8916/NJH47F (samsung, SM-J500F, Wireless) com.google.android.youtube.tv/2.02.14
+
+
+Mozilla/5.0 (PS4; Leanback Shell) Cobalt/24.lts.13.1032728-gold v8/8.8.278.8-jit gles Starboard/14, SystemIntegratorName_PS4_ChipsetModelNumber_2024/FirmwareVersion (Sony, PS4, Wired)
