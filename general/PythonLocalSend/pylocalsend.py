@@ -8,13 +8,13 @@ import hashlib
 
 # Ensure the correct number of arguments
 if len(sys.argv) < 3:
-    print("Usage: python script.py <file_path> <server_address>")
+    print("Usage: python script.py <server_address> <file_path>")
     sys.exit(1)
 
 print("\n")
 
-file_path = sys.argv[1]  # First argument: File path
-server_address = sys.argv[2]  # Second argument: Server address (e.g., localhost)
+file_path = sys.argv[2]  # First argument: File path
+server_address = sys.argv[1]  # Second argument: Server address (e.g., localhost)
 
 file_name = os.path.basename(file_path)
 
@@ -72,6 +72,7 @@ try:
     # Print response status and body
     print("\n=== Prepare Upload Response ===")
     print("Status Code:", response.status_code)
+    print(f"First request hash:  {':'.join(f'{b:02X}' for b in bytes.fromhex(cert_hash_1))}")
     print("\n\n")
 
     # Parse JSON response
@@ -100,14 +101,13 @@ try:
         print("\n=== Upload Response ===")
         print("Status Code:", upload_response.status_code)
         print("Response Body:", upload_response.text)
+        print(f"Second request hash: {':'.join(f'{b:02X}' for b in bytes.fromhex(cert_hash_2))}")
         print("\n")
         
 
     # **Compare the certificate hashes**
     if cert_hash_1 and cert_hash_2:
         print("\n=== Certificate Hash Comparison ===")
-        print(f"First request hash:  {':'.join(f'{b:02X}' for b in bytes.fromhex(cert_hash_1))}")
-        print(f"Second request hash: {':'.join(f'{b:02X}' for b in bytes.fromhex(cert_hash_2))}")
 
         if cert_hash_1 == cert_hash_2:
             print("Certificate is the SAME for both requests.")
