@@ -1,0 +1,3 @@
+Comand used for av01 video encoding (for videos uploaded on Google Drive)
+
+ffmpeg -i input.MOV -s 1280x720 -r 30 -c:v libsvtav1 -preset 6 -crf 50 -c:a copy output.mkv
