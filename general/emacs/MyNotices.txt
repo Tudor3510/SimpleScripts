@@ -1,0 +1,1 @@
+M-x shell, M-x term and M-x vterm are both different
