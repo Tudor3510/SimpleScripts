@@ -33,5 +33,7 @@
 
 
 (setq font-latex-fontify-sectioning 'color)
-
-
+(setq tex-fontify-script nil)
+(setq font-latex-fontify-script nil)
+(with-eval-after-load 'font-latex
+  (set-face-attribute 'font-latex-bold-face nil :weight 'normal))
