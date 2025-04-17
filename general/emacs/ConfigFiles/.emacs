@@ -17,6 +17,8 @@
 (prefer-coding-system 'utf-8)
 (set-language-environment "UTF-8")
 (setq default-buffer-file-coding-system 'utf-8)
+
+
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
@@ -27,6 +29,8 @@
       '(("melpa" . "https://melpa.org/packages/")
         ("gnu" . "https://elpa.gnu.org/packages/")))
 (package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
 
 
 (setq-default tab-width 4)
@@ -37,3 +41,9 @@
 (setq font-latex-fontify-script nil)
 (with-eval-after-load 'font-latex
   (set-face-attribute 'font-latex-bold-face nil :weight 'normal))
+
+
+
+;; Enable undo-redo support (Emacs 28+ has built-in undo-redo)
+(global-set-key (kbd "C-,") 'undo)
+(global-set-key (kbd "C-/") 'undo-redo)
