@@ -47,3 +47,7 @@
 ;; Enable undo-redo support (Emacs 28+ has built-in undo-redo)
 (global-set-key (kbd "C-,") 'undo)
 (global-set-key (kbd "C-/") 'undo-redo)
+
+
+(when (eq system-type 'windows-nt)
+  (set-face-attribute 'default nil :height 110))
