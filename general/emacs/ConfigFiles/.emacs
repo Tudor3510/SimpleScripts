@@ -39,6 +39,9 @@
 ;; Set tab width to 4 spaces
 (setq-default tab-width 4)
 
+;; Set tab width to 4 spaces in LaTeX
+(setq LaTeX-indent-level 4)
+
 
 (setq font-latex-fontify-sectioning 'color)
 (setq tex-fontify-script nil)
