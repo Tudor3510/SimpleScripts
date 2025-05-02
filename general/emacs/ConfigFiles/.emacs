@@ -42,6 +42,8 @@
 ;; Set tab width to 4 spaces in LaTeX
 (setq LaTeX-indent-level 4)
 
+;; Set tab width to 4 spaces in cc-mode
+(setq c-basic-offset 4)
 
 (setq font-latex-fontify-sectioning 'color)
 (setq tex-fontify-script nil)
