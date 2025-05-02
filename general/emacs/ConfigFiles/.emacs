@@ -45,6 +45,9 @@
 ;; Set tab width to 4 spaces in cc-mode
 (setq c-basic-offset 4)
 
+;; Enable line numbers globally (for all buffers)
+(global-display-line-numbers-mode)
+
 (setq font-latex-fontify-sectioning 'color)
 (setq tex-fontify-script nil)
 (setq font-latex-fontify-script nil)
