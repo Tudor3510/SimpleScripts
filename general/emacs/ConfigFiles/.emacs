@@ -6,7 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(custom-enabled-themes '(leuven-dark))
  '(package-selected-packages
-   '(auctex company company-auctex company-bibtex powershell vterm)))
+   '(auctex company company-auctex company-bibtex powershell sweeprolog
+            vterm)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -31,6 +32,9 @@
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
+
+
+(require 'sweeprolog)
 
 
 ;; Use spaces instead of tabs
@@ -63,3 +67,14 @@
 
 (when (eq system-type 'windows-nt)
   (set-face-attribute 'default nil :height 110))
+  
+  
+  
+  
+(with-eval-after-load 'package
+  (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+  
+  
+
+(add-to-list 'auto-mode-alist '("\\.pl\\'" . sweeprolog-mode))
+
