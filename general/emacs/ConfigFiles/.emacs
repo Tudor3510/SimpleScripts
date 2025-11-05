@@ -78,3 +78,6 @@
 
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . sweeprolog-mode))
 
+(cua-mode 1)
+
+
