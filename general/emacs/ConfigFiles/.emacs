@@ -75,7 +75,7 @@
   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/")))
   
   
-
+;; Do not forget in Windows to set SWI_HOME_DIR environment variable
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . sweeprolog-mode))
 
 (cua-mode 1)
