@@ -2,9 +2,9 @@
 # Portrait videos (rotation -90, 90, or 270) → 480x854
 # Landscape or unrotated videos → 854x480
 
-$files = Get-ChildItem -Filter *.MOV
+$movFiles = Get-ChildItem -Filter *.MOV
 
-foreach ($f in $files) {
+foreach ($f in $movFiles) {
     # Get rotation using ffprobe
     $rotation = ffprobe -v error -select_streams v:0 `
         -show_entries stream_side_data=rotation `
@@ -24,6 +24,20 @@ foreach ($f in $files) {
 
     $out = [System.IO.Path]::ChangeExtension($f.FullName, ".mkv")
     Write-Host "Converting $($f.Name) (rotation=$rotation) → $resolution → $(Split-Path $out -Leaf)"
+
+    ffmpeg -i $f.FullName -s $resolution -r 10 -c:v libsvtav1 -preset 6 -crf 60 -c:a copy $out
+}
+
+# Convert every .MP4 file to .mkv using AV1
+# Always force portrait resolution 480x854 (no orientation check)
+
+$mp4Files = Get-ChildItem -Filter *.mp4
+
+foreach ($f in $mp4Files) {
+    $resolution = "480x854"
+
+    $out = [System.IO.Path]::ChangeExtension($f.FullName, ".mkv")
+    Write-Host "Converting $($f.Name) (forced) → $resolution → $(Split-Path $out -Leaf)"
 
     ffmpeg -i $f.FullName -s $resolution -r 10 -c:v libsvtav1 -preset 6 -crf 60 -c:a copy $out
 }
