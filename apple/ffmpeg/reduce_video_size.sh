@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # ===== CONFIG =====
-BITRATE="1500k"
+BITRATE="1200k"
 # ==================
 
 mkdir -p Output
@@ -56,10 +56,10 @@ for f in ./*.MOV; do
         1280x720)
             case "$rotation" in
                 90|-90|270|-270)
-                    out_res="720:1280"
+                    out_res="480:854"
                     ;;
                 0|180|-180)
-                    out_res="1280:720"
+                    out_res="854:480"
                     ;;
                 *)
                     echo "Skipping $filename (unknown rotation: $rotation)"
