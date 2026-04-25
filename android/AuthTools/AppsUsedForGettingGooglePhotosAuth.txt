@@ -1,0 +1,2 @@
+app.revanced.android.gms-250932004-signed.apk
+googlephotos-revanced-v7.68.0.884121604-arm64-v8a.apk
