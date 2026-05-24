@@ -1,0 +1,1 @@
+dumpcap -i 6 -f "tcp and dst host 192.168.100.197 and (dst port 8978 or dst port 8993 or dst port 8994 or dst port 8997)" -P -b filesize:400000 -b files:10 -w capture.pcap
