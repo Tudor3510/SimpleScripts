@@ -1,0 +1,5 @@
+Corefile:
+    - CoreDNS Corefile that uses template regexes to return NXDOMAIN for various Outlook, Teams, and Dropbox domains (including outlook.com, outlook.office365.com, teams.microsoft.com, teams.cloud.microsoft, dropbox.com, dropboxapi.com, dropboxusercontent.com). Unmatched queries are forwarded to 192.168.100.1; cache TTL set to 300s and logging/errors enabled. This enforces DNS-level blocking of those services.
+
+Corefile02:
+    - CoreDNS Corefile that uses a single template regex to return NXDOMAIN for various Outlook, Teams, Github, Unibuc and Dropbox domains (including outlook.com, outlook.office365.com, teams.microsoft.com, teams.cloud.microsoft, github.io, cs.unibuc.ro, dropbox.com, dropboxapi.com, dropboxusercontent.com). Unmatched queries are forwarded to 192.168.100.1; cache TTL set to 300s and logging/errors enabled. This enforces DNS-level blocking of those services.
