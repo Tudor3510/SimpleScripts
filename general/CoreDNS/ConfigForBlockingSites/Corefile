@@ -1,0 +1,48 @@
+.:53 {
+    template IN ANY {
+        match "(^|\.)outlook\.com\.$"
+        rcode NXDOMAIN
+        fallthrough
+    }
+
+    template IN ANY {
+        match "(^|\.)outlook\.office365\.com\.$"
+        rcode NXDOMAIN
+        fallthrough
+    }
+
+    template IN ANY {
+        match "(^|\.)teams\.microsoft\.com\.$"
+        rcode NXDOMAIN
+        fallthrough
+    }
+
+    template IN ANY {
+        match "(^|\.)teams\.cloud\.microsoft\.$"
+        rcode NXDOMAIN
+        fallthrough
+    }
+
+    template IN ANY {
+        match "(^|\.)dropbox\.com\.$"
+        rcode NXDOMAIN
+        fallthrough
+    }
+
+    template IN ANY {
+        match "(^|\.)dropboxapi\.com\.$"
+        rcode NXDOMAIN
+        fallthrough
+    }
+
+    template IN ANY {
+        match "(^|\.)dropboxusercontent\.com\.$"
+        rcode NXDOMAIN
+        fallthrough
+    }
+
+    forward . 192.168.100.1
+    cache 300
+    log
+    errors
+}
