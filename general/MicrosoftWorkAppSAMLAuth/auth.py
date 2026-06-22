@@ -70,7 +70,7 @@ def getJsessionId(
         # Load cookies from file
         file_cookies = read_cookie_file(cookie_file)
 
-        session.cookies.clear()
+        # session.cookies.clear()
 
         for name, value in file_cookies.items():
             session.cookies.set(name, value)
