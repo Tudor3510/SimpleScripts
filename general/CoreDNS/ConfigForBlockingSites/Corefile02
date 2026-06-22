@@ -1,6 +1,6 @@
 .:53 {
     template IN ANY {
-        match "(^|\.)(outlook\.com|outlook\.office365\.com|teams\.microsoft\.com|teams\.cloud\.microsoft|dropbox\.com|dropboxapi\.com|dropboxusercontent\.com|github\.io|cs\.unibuc\.ro)\.$"
+        match "(^|\.)(outlook\.com|outlook\.office365\.com|teams\.microsoft\.com|teams\.cloud\.microsoft|dropbox\.com|dropboxapi\.com|dropboxusercontent\.com|github\.io|cs\.unibuc\.ro|edu\.ro|unibuc\.ro|dev\.rrsapp\.com|uat\.rrsapp\.com)\.$"
         rcode NXDOMAIN
         fallthrough
     }
