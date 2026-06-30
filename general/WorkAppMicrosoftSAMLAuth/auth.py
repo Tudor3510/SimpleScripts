@@ -103,9 +103,7 @@ def getJsessionId(
         )["value"]
 
         # Fourth request
-        fourth_url = (
-            "https://localhost:8443/login/saml2/sso/azure-ad"
-        )
+        fourth_url = urljoin(base_url, "login/saml2/sso/azure-ad")
 
         fourth_response = session.post(
             fourth_url,
