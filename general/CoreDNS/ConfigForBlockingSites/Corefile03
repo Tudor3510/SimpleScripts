@@ -1,0 +1,12 @@
+.:53 {
+    template IN ANY {
+        match "(^|\.)(outlook\.com|outlook\.office365\.com|teams\.microsoft\.com|teams\.cloud\.microsoft|dropbox\.com|dropboxapi\.com|dropboxusercontent\.com|github\.io|cs\.unibuc\.ro|edu\.ro|unibuc\.ro|dev\.rrsapp\.com|uat\.rrsapp\.com|irinaciocan\.ro)\.$"
+        rcode NXDOMAIN
+        fallthrough
+    }
+
+    forward . 192.168.100.1
+    cache 300
+    log
+    errors
+}
