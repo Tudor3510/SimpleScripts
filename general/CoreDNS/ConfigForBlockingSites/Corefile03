@@ -1,4 +1,9 @@
 .:53 {
+    template IN A example.org. {
+        answer "example.org. 60 IN A 192.168.100.197"
+        fallthrough
+    }
+
     template IN ANY {
         match "(^|\.)(outlook\.com|outlook\.office365\.com|teams\.microsoft\.com|teams\.cloud\.microsoft|dropbox\.com|dropboxapi\.com|dropboxusercontent\.com|github\.io|cs\.unibuc\.ro|edu\.ro|unibuc\.ro|ase\.ro|irinaciocan\.ro|uvt\.ro|kingstonemanagement\.ro)\.$"
         rcode NXDOMAIN
